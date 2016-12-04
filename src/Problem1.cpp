@@ -52,5 +52,66 @@ e. Email length must be less than or equal to 254 characters.
 
 int isValidEmail(char *email)
 {
-	return -1;
+
+	int i = 0, sp = 0, t, j, p = 1, s = 1, k, len;
+	if (email == NULL)
+		return 0;
+	while (email[i] != '\0')
+		i++;
+	len = i;
+	i = 0;
+
+	while (email[i] != ' ')
+	{
+		i++;
+	}
+	t = i;
+	while (email[i] == ' '){
+		sp++; i++;
+	}
+	k = i;
+	while (email[k] != '@')
+	{
+		k++;
+	}
+
+	while (1)
+	{
+		for (j = 0; j < t; j++)
+		{
+			if (email[i] != email[j]){
+				p = 0;
+				break;
+
+			}
+			i++;
+		}
+		if (p == 1)
+			return 1;
+		if (p == 0)
+		{
+			i = k - 1;
+			for (j = t - 1; j >= 0; j--)
+			{
+				if (email[i] != email[j]){
+					s = 0;
+					break;
+
+				}
+				i--;
+			}
+			if (s == 1)
+				return 1;
+			else
+				return 2;
+
+
+
+		}
+
+
+
+	}
+
+
 }
